@@ -1,0 +1,95 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+    <title>Viajes Familiares</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="mis_viajes.js"></script>
+    <script type="text/javascript">
+        // VISTAS
+        const indexView = (viajes) => {
+            // Vista de página principal
+            let i = 0;
+            let view = "";
+
+            while(i < viajes.length) {
+                view += `
+                <div class="viaje">
+                    <div class="viaje-img">
+                        <img data-my-id="${i}" src="${viajes[i].miniatura}" onerror="this.src='files/placeholder.png'"/>
+                    </div>
+                    <div class="destino">
+                        ${viajes[i].destino || "<em>Sin título</em>"}
+                    </div>
+                    <div class="icono">
+                        <img src="${viajes[i].icono}">
+                    </div>    
+                    <div class="actions">
+                        <button class="show" data-my-id="${i}">ver</button>
+                    </div>
+                </div>\n`;
+                i = i + 1;
+            };
+
+            return view;
+        };
+
+        const showView = (viaje) => {
+            // Vista de página de cada viaje
+            return `<h2>Viaje </h2>
+                <table>
+                    <tr>
+                    <th> Destino </th> <td>${viaje.destino}</td>
+                    </tr>
+                    <tr>
+                    <th> Año </th> <td>${viaje.año}</td>
+                    </tr>
+                    <tr>
+                    <th> Duración </th> <td>${viaje.duracion}</td>
+                    </tr>
+                    <tr>
+                    <th> Participantes </th> <td>${viaje.participantes}</td>
+                    </tr>
+                </table>
+                <div class="vista-imagen">
+                    <img src="${viaje.miniatura}">
+                </div>        
+                <div class="actions">
+                    <button class="index">Volver</button>
+                </div>`;
+            }
+
+
+        // CONTROLADORES 
+        const indexContr = () => {
+            document.getElementById('main').innerHTML = indexView(mis_viajes);
+        };
+
+        const showContr = (i) => {
+            let viaje = mis_viajes[i];            
+            document.getElementById('main').innerHTML = showView(viaje);
+
+        };
+
+        // ROUTER de eventos
+        const matchEvent = (ev, sel) => ev.target.matches(sel);
+        const myId = (ev) => Number(ev.target.dataset.myId);
+
+        document.addEventListener('click', ev => {
+            if      (matchEvent(ev, '.index'))  indexContr  ();
+            else if (matchEvent(ev, '.show')) showContr (myId(ev));
+        })
+        
+        // Inicialización        
+        document.addEventListener('DOMContentLoaded', indexContr);
+    </script>
+</head>
+
+<body>
+
+    <h1>Página de Viajes Cañada-Carril</h1>
+    <div id="main"></div>
+    
+</body>
+</html>
+
+

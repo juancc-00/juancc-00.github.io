@@ -1,0 +1,37 @@
+body { --primary: #3e7843; --secondary: #6da776; margin: 0px;}
+        * {font-family: 'Roboto', sans-serif;}
+        button { 
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            text-decoration: none;
+            margin: 2px;
+            color: var(--primary);
+            background: white;
+            border: 1px solid var(--primary);
+            height: 25px;
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: ease-in 0.01s all;
+            padding: 0 8px 0 8px;
+        }
+
+        div#main {padding: 10px;}
+        h1 {background: var(--primary); color: white; font-weight: 300; text-transform: uppercase; font-size: 20px; margin: 0px; padding: 15px;}
+        h2 { margin-block-start: 0px; margin-block-end: 10px; font-size: 20px;  color: var(--primary);}
+        button:hover { background: var(--primary); color: white; }
+        div.actions {margin-top: 10px;}
+        div.viaje {position: relative; display: inline-block; width: auto; padding: 10px; box-shadow: 2px 2px 7px #cccccc; margin: 5px;}
+        div.viaje div.viaje-img {width: 200px; height: auto; min-height: 200px; cursor: pointer;}
+        div.viaje div.viaje-img img {width: 100%; height: auto;}
+        div.viaje div.destino {text-align: center; overflow: hidden; text-overflow: ellipsis; width: 200px; white-space: nowrap;}
+        div.viaje {color: var(--primary); text-transform: uppercase; font-size: 15px;} 
+        div.viaje div.icono {position:absolute; bottom: 10px; right: 10px; width: 30px; height: 30px; overflow: hidden; border-radius: 50%;}
+        div.viaje div.icono img {width: 100%; height: auto; object-fit: cover;}
+
+        .vista-imagen {width: 300px; height: auto; cursor: pointer;}
+        .vista-imagen img {width: 100%; height: auto;}
+
+
+        th {text-align: left; padding-right: 15px;}
+        td {padding-left: 5px;}
